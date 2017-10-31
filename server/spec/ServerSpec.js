@@ -88,7 +88,6 @@ describe('Node Server Request Listener Function', function() {
     handler.requestHandler(req, res);
 
     expect(res._responseCode).to.equal(201);
-    // console.log(res._data, 'resdata'),
 
     // Now if we request the log for that room the message we posted should be there:
     req = new stubs.request('/classes/messages', 'GET');

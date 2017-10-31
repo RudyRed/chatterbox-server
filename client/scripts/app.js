@@ -12,6 +12,7 @@ var app = {
 
   init: function() {
     // Get username
+    app.nextId = 1;
     app.username = window.location.search.substr(10);
     app.firstLoad = true;
     // Cache jQuery selectors
@@ -42,10 +43,11 @@ var app = {
     $.ajax({
       url: app.server,
       type: 'POST',
-      data: JSON.stringify(message),
+      data: JSON.stringify(Object.assign(message, {objectId: app.nextId})),
       success: function (data) {
         // Clear messages input
         app.$message.val('');
+        app.nextId++;
 
         // Trigger a fetch to update the messages, pass true to animate
         app.fetch();

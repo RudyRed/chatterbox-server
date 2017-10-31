@@ -20,9 +20,10 @@ var defaultCorsHeaders = {
 
 
 
-var messages = [{text: 'Hello', username: 'Gerald', objectId: 0}];
+
+// var messages = [{text: 'Hello', username: 'Gerald', objectId: 0}];
+var messages = [];
 var rooms = [];
-var nextId = 1;
 
 
 var requestHandler = function(request, response) {
@@ -66,8 +67,7 @@ var requestHandler = function(request, response) {
       body = Buffer.concat(body).toString();
       var statusCode = 201;
       body = JSON.parse(body);
-      body.objectId = nextId;
-      nextId++;
+      // body.objectId = nextId;
       messages.push(body);
       var output = JSON.stringify({results: messages});
       response.writeHead(statusCode, headers);

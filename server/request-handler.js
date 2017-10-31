@@ -20,7 +20,7 @@ var defaultCorsHeaders = {
 
 
 
-var messages = [];
+var messages = [{message: 'hello', username: 'gerald'}];
 var rooms = [];
 
 var requestHandler = function(request, response) {
@@ -43,7 +43,7 @@ var requestHandler = function(request, response) {
     response.end('invlaid link');
   }
 
-  if (request.methods === 'OPTIONS') {
+  if (request.method === 'OPTIONS') {
     var statusCode = 200;
     headers['Content-Type'] = 'text/plain';
     response.writeHead(statusCode, headers);

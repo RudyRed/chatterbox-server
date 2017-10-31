@@ -12,7 +12,6 @@ var app = {
 
   init: function() {
     // Get username
-// debugger;
     app.username = window.location.search.substr(10);
 
     // Cache jQuery selectors
@@ -64,7 +63,6 @@ var app = {
       contentType: 'application/json',
       success: function(data) {
         // Don't bother if we have nothing to work with
-  console.log('hello') 
         if (!data.results || !data.results.length) { return; }
 
         // Store messages for caching later

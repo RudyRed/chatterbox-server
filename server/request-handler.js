@@ -20,8 +20,10 @@ var defaultCorsHeaders = {
 
 
 
-var messages = [{message: 'hello', username: 'gerald'}];
+var messages = [{text: 'Hello', username: 'Gerald', objectId: 0}];
 var rooms = [];
+var nextId = 1;
+
 
 var requestHandler = function(request, response) {
  
@@ -63,14 +65,17 @@ var requestHandler = function(request, response) {
     }).on('end', () => {
       body = Buffer.concat(body).toString();
       var statusCode = 201;
-      messages.push(JSON.parse(body));
+      body = JSON.parse(body);
+      body.objectId = nextId;
+      nextId++;
+      messages.push(body);
       var output = JSON.stringify({results: messages});
       response.writeHead(statusCode, headers);
       response.end(output);
     });
   }
 };
-
+ 
 // These headers will allow Cross-Origin Resource Sharing (CORS).
 // This code allows this server to talk to websites that
 // are on different domains, for instance, your chat client.

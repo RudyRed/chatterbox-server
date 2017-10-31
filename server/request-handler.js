@@ -19,9 +19,21 @@ var defaultCorsHeaders = {
 };
 
 
+var output = {
+  results: []
+};
+  // // output.results = [];
+  // if (response._data) {
+  //   output.results = response._data.results;
+  // }
+
+  // if (!response._data) {
+  //   output.results = [];
+  // }
+
 var requestHandler = function(request, response) {
-  var output = {};
-  output.results = [];
+  
+
   // Request and Response come from node's http module.
   //
   // They include information about both the incoming request, such as
@@ -30,7 +42,8 @@ var requestHandler = function(request, response) {
   //
   // Documentation for both request and response can be found in the HTTP section at
   // http://nodejs.org/documentation/api/
-
+//console.log(response, 'respone')
+//console.log(request, 'request')
   // Do some basic logging.
   //
   // Adding more logging to your server can be an easy way to get passive
@@ -47,7 +60,7 @@ var requestHandler = function(request, response) {
   //
   // You will need to change this if you are sending something
   // other than plain text, like JSON or HTML.
-  headers['Content-Type'] = 'text/plain';
+  headers['Content-Type'] = 'application/json';
 
   if (request.method === 'POST') {
     output.results.push(request._postData);
@@ -76,7 +89,6 @@ var requestHandler = function(request, response) {
   //   setEncoding: [Function],
   //   on: [Function: bound ],
   //   addListener: [Function: bound ] }
-
 
 
 
